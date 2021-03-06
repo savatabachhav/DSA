@@ -30,7 +30,10 @@ class DeliverySolutions {
 	var $buildingWiseFloor = [];
 
 	var $finalDeliveryDistance = 0;
-	function __construct($numberOfBuilding, $numberOfFloor, $parcels, $parcelLocations) {
+	function __construct($numberOfBuilding, 
+			     $numberOfFloor, 
+			     $parcels, 
+			     $parcelLocations) {
 		$this->numberOfBuilding = $numberOfBuilding;
 		$this->numberOfFloor 	= $numberOfFloor;
 		$this->parcels 			= $parcels;
@@ -45,7 +48,8 @@ class DeliverySolutions {
 		$this->finalDeliveryDistance = $buldingTravel+$securityGateTravel;
 	}
 	/*
-	Calculation total distance requiered to travel in the building for To and Frow
+	Calculation total distance requiered to travel 
+	in the building for To and Frow
 	*/
 	function calculateBuildingTravelDistance() {
 		$totalBuldingTravelDistance = 0;
@@ -80,7 +84,10 @@ $numberOfFloor 		= 4;
 $parcels 			= 6;
 $parcelLocations 	= [[1,2],[2,4],[3,2],[4,4],[5,2],[6,4]];
 
-$objDeliverySolution = new DeliverySolutions($numberOfBuilding, $numberOfFloor, $parcels, $parcelLocations);
+$objDeliverySolution = new DeliverySolutions($numberOfBuilding, 
+					     $numberOfFloor, 
+					     $parcels, 
+					     $parcelLocations);
 ?>
 <table border="1">
 	<tr>
