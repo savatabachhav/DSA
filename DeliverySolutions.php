@@ -29,37 +29,36 @@ class DeliverySolutions {
 	/*runtime vars*/
 	var $buildingWiseFloor = [];
 
-	var $finalDeliveryTime = 0;
+	var $finalDeliveryDistance = 0;
 	function __construct($numberOfBuilding, $numberOfFloor, $parcels, $parcelLocations) {
 		$this->numberOfBuilding = $numberOfBuilding;
 		$this->numberOfFloor 	= $numberOfFloor;
 		$this->parcels 			= $parcels;
 		$this->parcelLocations 	= $parcelLocations;
 
-		$this->calculateTotalTime();
+		$this->calculateTotalDistance();
 	}
-	function calculateTotalTime() {
+	function calculateTotalDistance() {
 		$this->sortBuldingwiseFloor();
-		$buldingTravel 		= $this->calculateBuildingTravelTime();
-		//echo "<br>BTD==>".$buldingTravel;
-		$securityGateTravel = $this->calculateSecurityGateTravelTime();
-		$this->finalDeliveryTime = $buldingTravel+$securityGateTravel;
+		$buldingTravel 		= $this->calculateBuildingTravelDistance();
+		$securityGateTravel = $this->calculateSecurityGateTravelDistance();
+		$this->finalDeliveryDistance = $buldingTravel+$securityGateTravel;
 	}
 	/*
 	Calculation total distance requiered to travel in the building for To and Frow
 	*/
-	function calculateBuildingTravelTime() {
-		$totalBuldingTravelTime = 0;
+	function calculateBuildingTravelDistance() {
+		$totalBuldingTravelDistance = 0;
 		foreach ($this->buildingWiseFloor as $building) {
 			$maxFloor = max($building);
-			$totalBuldingTravelTime += ($maxFloor*2);
+			$totalBuldingTravelDistance += ($maxFloor*2);
 		}
-		return $totalBuldingTravelTime;
+		return $totalBuldingTravelDistance;
 	}
 	/*
 	Calculation total distance requiered to travel by the Security Gate
 	*/
-	function calculateSecurityGateTravelTime() {
+	function calculateSecurityGateTravelDistance() {
 		return count($this->buildingWiseFloor)*2;
 	}
 	/*
@@ -104,6 +103,6 @@ $objDeliverySolution = new DeliverySolutions($numberOfBuilding, $numberOfFloor, 
 	<tr>
 		<th colspan="1" rowspan="4">Output</th>
 		<th>Distance Travelled by Delivery Boy</th>
-		<td align="right"><?php echo $objDeliverySolution->finalDeliveryTime; ?> <b>Units</b></td>
+		<td align="right"><?php echo $objDeliverySolution->finalDeliveryDistance; ?> <b>Units</b></td>
 	</tr>
 </table>
